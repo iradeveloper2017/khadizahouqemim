@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khadiza Houqe Mim | Mechanical Technology Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --bg-dark: #0a0a0a;
+            --accent-blue: #2563eb;
+            --accent-gold: #fbbf24;
+            --card-bg: rgba(20, 20, 20, 0.8);
+            --text-light: #f3f4f6;
+        }
+
+        [data-theme="light"] {
+            --bg-dark: #f8fafc;
+            --accent-blue: #3b82f6;
+            --accent-gold: #d97706;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-light: #111827;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Clean Modern Typography */
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #2563eb 0%, #60a5fa 50%, #93c5fd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mechanical-text {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 600;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Modern Cards */
+        .modern-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="light"] .modern-card {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .modern-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-blue);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(251, 191, 36, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+        }
+
+        /* Glowing Effects */
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px var(--accent-blue), 0 0 20px var(--accent-blue), 0 0 30px var(--accent-blue);
+            }
+            to {
+                box-shadow: 0 0 20px var(--accent-blue), 0 0 30px var(--accent-blue), 0 0 40px var(--accent-blue);
+            }
+        }
+
+        /* Section System */
+        .section {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            padding-top: 80px;
+            overflow-y: auto;
+            transform: translateX(100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                        opacity 0.3s ease,
+                        visibility 0s linear 0.3s;
+            pointer-events: none;
+        }
+
+        .section.active {
+            transform: translateX(0);
+            opacity: 1;
+            visibility: visible;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                        opacity 0.3s ease,
+                        visibility 0s linear;
+            pointer-events: all;
+        }
+
+        /* Navigation */
+        .nav-link {
+            position: relative;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-gold));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-active::after {
+            width: 100%;
+        }
+
+        .nav-active {
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        /* Profile Image */
+        .profile-container {
+            position: relative;
+            border-radius: 50%;
+            padding: 8px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-gold));
+            animation: rotate 20s linear infinite;
+        }
+
+        .profile-img {
+            border-radius: 50%;
+            border: 4px solid var(--bg-dark);
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Status Indicator */
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .mechanical-text {
+                font-size: 1rem;
+                letter-spacing: 2px;
+            }
+            
+            .modern-card {
+                border-radius: 16px;
+            }
+        }
+
+        /* Family Member Card */
+        .family-card {
+            background: rgba(30, 30, 30, 0.6);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .family-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(37, 99, 235, 0.3);
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        .highlight-card {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Education Timeline */
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 22px;
+            width: 2px;
+            height: calc(100% + 18px);
+            background: rgba(37, 99, 235, 0.3);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+    </style>
+</head>
+<body class="antialiased" data-theme="dark">
+
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Navigation -->
+    <header class="fixed top-0 z-50 w-full px-5 py-4 bg-black/20 backdrop-blur-xl">
+        <div class="flex items-center justify-between max-w-7xl mx-auto">
+            <div class="text-2xl font-bold cursor-pointer" id="homeBtn">
+                <span class="text-blue-500">K</span><span class="text-yellow-500">H</span>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#home" class="nav-link nav-active text-blue-500" data-target="home">HOME</a>
+                <a href="#about" class="nav-link text-gray-400 hover:text-blue-400" data-target="about">ABOUT</a>
+                <a href="#family" class="nav-link text-gray-400 hover:text-blue-400" data-target="family">FAMILY</a>
+                <a href="#education" class="nav-link text-gray-400 hover:text-blue-400" data-target="education">EDUCATION</a>
+                <a href="#contact" class="nav-link text-gray-400 hover:text-blue-400" data-target="contact">CONTACT</a>
+            </nav>
+            
+            <div class="flex items-center gap-4">
+                <button id="themeToggle" class="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors">
+                    <i class="fas fa-sun text-yellow-500"></i>
+                </button>
+                
+                <button id="mobileMenuBtn" class="md:hidden w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl p-5">
+            <div class="flex flex-col gap-4">
+                <a href="#home" class="nav-link py-3 text-blue-500 font-semibold" data-target="home">HOME</a>
+                <a href="#about" class="nav-link py-3 text-gray-400" data-target="about">ABOUT</a>
+                <a href="#family" class="nav-link py-3 text-gray-400" data-target="family">FAMILY</a>
+                <a href="#education" class="nav-link py-3 text-gray-400" data-target="education">EDUCATION</a>
+                <a href="#contact" class="nav-link py-3 text-gray-400" data-target="contact">CONTACT</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home-section" class="section active">
+        <div class="section-content flex flex-col items-center justify-center min-h-[calc(100vh-80px)] px-5 py-10">
+            <div class="text-center mb-12">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-2 bg-gray-900/50 backdrop-blur-sm px-4 py-2 rounded-full mb-8">
+                    <div class="status-dot"></div>
+                    <span class="text-sm font-mono text-green-400">Currently Available</span>
+                </div>
+                
+                <!-- Main Hero Text - KHADIZA -->
+                <h1 class="hero-title text-7xl md:text-9xl lg:text-[10rem] mb-6 leading-tight">
+                    KHADIZA
+                </h1>
+                
+                <!-- Mechanical Technology Student | Aspiring Engineer -->
+                <div class="mb-8">
+                    <h2 class="mechanical-text text-2xl md:text-3xl lg:text-4xl mb-2">
+                        MECHANICAL TECHNOLOGY STUDENT | ASPIRING ENGINEER
+                    </h2>
+                    <div class="w-32 h-1 bg-gradient-to-r from-blue-500 to-yellow-500 mx-auto rounded-full"></div>
+                </div>
+                
+                <!-- Tagline -->
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-12 leading-relaxed">
+                    Learning Today • Engineering Tomorrow
+                </p>
+            </div>
+            
+            <!-- Profile Image and Info -->
+            <div class="flex flex-col lg:flex-row items-center justify-center gap-12 w-full max-w-6xl">
+                <!-- Profile Image -->
+                <div class="flex-1 flex justify-center">
+                    <div class="profile-container w-64 h-64 md:w-80 md:h-80">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=800"
+                             class="profile-img w-full h-full object-cover"
+                             alt="Mechanical Engineering">
+                    </div>
+                </div>
+                
+                <!-- Info Cards -->
+                <div class="flex-1 space-y-6">
+                    <!-- Personal Info Card -->
+                    <div class="modern-card p-8">
+                        <h3 class="text-2xl font-bold mb-4">PERSONAL PROFILE</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-user text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-500">Full Name</div>
+                                    <div class="font-semibold">Khadiza Houqe Mim</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 bg-yellow-500/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-user-tie text-yellow-500"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-500">Professional Title</div>
+                                    <div class="font-semibold">Mechanical Technology Student</div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 bg-green-500/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-heart text-green-500"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm text-gray-500">Passion</div>
+                                    <div class="font-semibold">Engineering Innovation</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Button -->
+                    <button class="modern-card w-full p-6 text-center group hover:bg-blue-500/10 hover:border-blue-500/50 contact-btn">
+                        <div class="flex items-center justify-center gap-3">
+                            <i class="fas fa-paper-plane text-blue-500 group-hover:text-blue-400 text-xl"></i>
+                            <span class="text-lg font-semibold">GET IN TOUCH</span>
+                            <i class="fas fa-arrow-right text-blue-500 group-hover:translate-x-2 transition-transform"></i>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <i class="fas fa-chevron-down text-blue-500 text-2xl"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about-section" class="section">
+        <div class="section-content py-20 px-5 max-w-6xl mx-auto">
+            <div class="mb-16">
+                <div class="inline-block px-4 py-2 bg-blue-500/10 rounded-full mb-4">
+                    <span class="text-blue-500 font-semibold">PROFESSIONAL PROFILE</span>
+                </div>
+                <h2 class="section-title text-5xl md:text-7xl mb-6">About Me</h2>
+                <p class="text-gray-400 text-lg max-w-3xl leading-relaxed">
+                   I am a Mechanical Technology student, currently in the learning phase, with a growing interest in engineering, practical innovation, and real-world applications.
+                </p>
+            </div>
+            
+            <!-- About Content -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+                <!-- Left Column -->
+                <div class="space-y-8">
+                    <!-- Professional Journey -->
+                    <div class="modern-card p-8">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-road text-blue-500 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">My Journey</h3>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            My journey in mechanical technology began with a fascination for how things work. Growing up, I was always curious about machinery, engines, and the mechanics behind everyday objects.
+                        </p>
+                        <p class="text-gray-300">
+                            This curiosity led me to pursue formal education in Mechanical Technology at Comilla Polytechnic Institute, where I'm developing both theoretical knowledge and practical skills.
+                        </p>
+                    </div>
+                    
+                    <!-- Skills -->
+                    <div class="modern-card p-8">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 bg-yellow-500/10 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-tools text-yellow-500 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Technical Skills</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Mechanical Design</span>
+                                    <span class="text-blue-500 font-semibold">85%</span>
+                                </div>
+                                <div class="w-full bg-gray-800 rounded-full h-2">
+                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">CAD/CAM</span>
+                                    <span class="text-blue-500 font-semibold">78%</span>
+                                </div>
+                                <div class="w-full bg-gray-800 rounded-full h-2">
+                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 78%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="font-medium">Thermodynamics</span>
+                                    <span class="text-blue-500 font-semibold">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-800 rounded-full h-2">
+                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column -->
+                <div class="space-y-8">
+                    <!-- Mission & Vision -->
+                    <div class="modern-card p-8">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 bg-green-500/10 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-bullseye text-green-500 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Mission & Vision</h3>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-bold mb-2 text-green-400">Mission</h4>
+                                <p class="text-gray-300">
+                                    To harness my knowledge in mechanical technology to create practical and sustainable engineering solutions that improve everyday life.
+                                </p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2 text-blue-400">Vision</h4>
+                                <p class="text-gray-300">
+                                    To grow as a skilled mechanical engineer, contributing to renewable energy systems and supporting Bangladesh’s sustainable industrial development.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Values -->
+                    <div class="modern-card p-8">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-star text-purple-500 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Core Values</h3>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-gray-900/50 p-4 rounded-lg">
+                                <div class="text-blue-500 mb-2">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <div class="font-semibold">Curiosity & Innovation</div>
+                            </div>
+                            <div class="bg-gray-900/50 p-4 rounded-lg">
+                                <div class="text-green-500 mb-2">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <div class="font-semibold">Sustainable Thinking</div>
+                            </div>
+                            <div class="bg-gray-900/50 p-4 rounded-lg">
+                                <div class="text-yellow-500 mb-2">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="font-semibold">Commitment to Learning & Excellence</div>
+                            </div>
+                            <div class="bg-gray-900/50 p-4 rounded-lg">
+                                <div class="text-red-500 mb-2">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="font-semibold">Teamwork & Collaboration</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Current Focus -->
+            <div class="modern-card p-8">
+                <h3 class="text-2xl font-bold mb-6 text-center">Current Focus & Interests</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center p-6 bg-blue-500/10 rounded-xl">
+                        <div class="text-3xl mb-4">🎓</div>
+                        <h4 class="font-bold mb-2">Academic Excellence</h4>
+                        <p class="text-sm text-gray-300">Striving for strong academic performance in Mechanical Technology at Comilla Polytechnic Institute.</p>
+                    </div>
+                    <div class="text-center p-6 bg-green-500/10 rounded-xl">
+                        <div class="text-3xl mb-4">⚙️</div>
+                        <h4 class="font-bold mb-2">Practical Skills</h4>
+                        <p class="text-sm text-gray-300">Developing strong hands-on skills through practical work with machinery, tools, and workshop activities.</p>
+                    </div>
+                    <div class="text-center p-6 bg-purple-500/10 rounded-xl">
+                        <div class="text-3xl mb-4">🌱</div>
+                        <h4 class="font-bold mb-2">Sustainable Engineering</h4>
+                        <p class="text-sm text-gray-300">Learning to design and apply mechanical solutions that are efficient, environmentally responsible, and sustainable for the future.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Family Section -->
+    <section id="family-section" class="section">
+        <div class="section-content py-20 px-5 max-w-6xl mx-auto">
+            <div class="mb-16">
+                <div class="inline-block px-4 py-2 bg-pink-500/10 rounded-full mb-4">
+                    <span class="text-pink-500 font-semibold">MY FAMILY</span>
+                </div>
+                <h2 class="section-title text-5xl md:text-7xl mb-6">The 7 Pillars</h2>
+                <p class="text-gray-400 text-lg max-w-3xl leading-relaxed">
+                    I come from a close-knit family of seven. Each member supports me in different ways and inspires me to move forward in my journey.
+                </p>
+            </div>
+            
+            <!-- Family Members -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                <!-- Father -->
+                <div class="family-card">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-user-tie text-blue-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-blue-500 font-bold text-sm">01</div>
+                            <h3 class="text-xl font-bold">Father</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        My father has always been my guide and source of inspiration. His advice and support shape my journey every day.
+                    </p>
+                </div>
+                
+                <!-- Mother -->
+                <div class="family-card">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-pink-500/20 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-user-nurse text-pink-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-pink-500 font-bold text-sm">02</div>
+                            <h3 class="text-xl font-bold">Mother</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        My mother is the heart of our family, whose love, patience, and care inspire and keep us united every day.
+                    </p>
+                </div>
+                
+                <!-- Elder Sister 1 -->
+                <div class="family-card">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-user-graduate text-purple-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-purple-500 font-bold text-sm">03</div>
+                            <h3 class="text-xl font-bold">Elder Sister</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        The guiding star of our family, leading with wisdom, care, and a heart full of love.
+                    </p>
+                </div>
+                
+                <!-- Elder Sister 2 -->
+                <div class="family-card">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-user-md text-green-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-green-500 font-bold text-sm">04</div>
+                            <h3 class="text-xl font-bold">Second Sister</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        Her determination and encouragement inspire me to aim higher every day.
+                    </p>
+                </div>
+                
+                <!-- Younger Sister -->
+                <div class="family-card">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-yellow-500/20 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-user-graduate text-yellow-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-yellow-500 font-bold text-sm">05</div>
+                            <h3 class="text-xl font-bold">Younger Sister</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">
+                        A constant source of support and positivity, always lifting everyone around her.
+                    </p>
+                </div>
+                
+                <!-- Khadiza (Highlighted) -->
+                <div class="family-card highlight-card md:col-span-2 lg:col-span-1">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-cogs text-white text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-white font-bold text-sm">06</div>
+                            <h3 class="text-xl font-bold text-white">Khadiza</h3>
+                            <div class="text-xs text-white/80">(Me)</div>
+                        </div>
+                    </div>
+                    <p class="text-white/90">
+                        Curious, driven, and passionate, always exploring and learning while cherishing my family’s love.
+                    </p>
+                    <div class="mt-4 inline-flex items-center gap-2 bg-white/20 px-3 py-1 rounded-full">
+                        <i class="fas fa-bolt text-yellow-300"></i>
+                        <span class="text-sm text-white">Family Member #6</span>
+                    </div>
+                </div>
+                
+                <!-- Youngest Sister -->
+                <div class="family-card md:col-span-2 lg:col-span-3">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-user text-red-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-red-500 font-bold text-sm">07</div>
+                            <h3 class="text-xl font-bold">Youngest Sister</h3>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-center">
+                        Full of joy and innocence, bringing laughter and happiness to our home every day.They give me a lot of grief 😅
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Family Story -->
+            <div class="modern-card p-8">
+                <h3 class="text-2xl font-bold mb-6 text-center">Our Family Story</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-home text-blue-500"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold">Family Structure</h4>
+                        </div>
+                        <p class="text-gray-400">
+                            We are a loving family of seven our parents and five daughters. Each of us brings something special, making our home full of warmth, support, and joy.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 bg-yellow-500/10 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-handshake text-yellow-500"></i>
+                            </div>
+                            <h4 class="text-lg font-semibold">Mutual Support</h4>
+                        </div>
+                        <p class="text-gray-400">
+                              Our family thrives on love and support. We encourage each other’s dreams, face challenges together, and celebrate every achievement, big or small.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education-section" class="section">
+        <div class="section-content py-20 px-5 max-w-6xl mx-auto">
+            <div class="mb-16">
+                <div class="inline-block px-4 py-2 bg-yellow-500/10 rounded-full mb-4">
+                    <span class="text-yellow-500 font-semibold">ACADEMIC JOURNEY</span>
+                </div>
+                <h2 class="section-title text-5xl md:text-7xl mb-6">Education & Training</h2>
+                <p class="text-gray-400 text-lg max-w-3xl leading-relaxed">
+                    My educational journey is centered on strengthening my skills in mechanical technology while gaining a solid understanding of core engineering concepts.
+                </p>
+            </div>
+            
+            <!-- Comilla Polytechnic Institute -->
+            <div class="modern-card p-8 mb-12">
+                <div class="flex flex-col lg:flex-row lg:items-center gap-8">
+                    <!-- Institute Logo/Badge -->
+                    <div class="lg:w-1/3">
+                        <div class="bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl p-8 text-center">
+                            <div class="text-5xl mb-4">🏛️</div>
+                            <h3 class="text-2xl font-bold text-white mb-2">Comilla Polytechnic Institute</h3>
+                            <div class="text-blue-200 font-semibold">Established Excellence</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Institute Details -->
+                    <div class="lg:w-2/3">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h3 class="text-2xl font-bold mb-2">Comilla Polytechnic Institute</h3>
+                                <p class="text-blue-500 font-semibold">Department of Mechanical Technology</p>
+                            </div>
+                            <div class="bg-green-500/20 text-green-400 px-4 py-2 rounded-full">
+                                <span class="font-semibold">Current Student</span>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-calendar-alt text-blue-500"></i>
+                                <span class="font-semibold">Session:</span>
+                                <span class="text-gray-300">2022 - 2023</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-map-marker-alt text-blue-500"></i>
+                                <span class="font-semibold">Location:</span>
+                                <span class="text-gray-300">Comilla, Bangladesh</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-graduation-cap text-blue-500"></i>
+                                <span class="font-semibold">Program:</span>
+                                <span class="text-gray-300">Diploma in Mechanical Technology</span>
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-400">
+                            At Comilla Polytechnic Institute, I am gaining quality technical education through practical learning and guidance from experienced instructors. The Mechanical Technology program helps me develop both theoretical understanding and hands-on skills needed for industrial work
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Course Structure -->
+            <div class="modern-card p-8 mb-12">
+                <h3 class="text-2xl font-bold mb-8">Program Curriculum</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="p-6 bg-gray-900/50 rounded-xl border border-gray-800">
+                        <div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-calculator text-blue-500"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Engineering Mathematics</h4>
+                        <p class="text-sm text-gray-400">Learning applied mathematics to analyze and solve real-world engineering challenges</p>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-900/50 rounded-xl border border-gray-800">
+                        <div class="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-fire text-red-500"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Thermodynamics</h4>
+                        <p class="text-sm text-gray-400">Learning how heat and energy are transferred and converted in engineering applications</p>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-900/50 rounded-xl border border-gray-800">
+                        <div class="w-10 h-10 bg-yellow-500/20 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-cogs text-yellow-500"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Machine Design</h4>
+                        <p class="text-sm text-gray-400">Learning the principles of designing safe, efficient, and reliable mechanical components</p>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-900/50 rounded-xl border border-gray-800">
+                        <div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-industry text-green-500"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Manufacturing</h4>
+                        <p class="text-sm text-gray-400">Production processes and techniques</p>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-900/50 rounded-xl border border-gray-800">
+                        <div class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-tools text-purple-500"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Workshop Practice</h4>
+                        <p class="text-sm text-gray-400">Hands on training with tools</p>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-900/50 rounded-xl border border-gray-800">
+                        <div class="w-10 h-10 bg-pink-500/20 rounded-lg flex items-center justify-center mb-4">
+                            <i class="fas fa-laptop-code text-pink-500"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">CAD/CAM</h4>
+                        <p class="text-sm text-gray-400">Learning computer aided design and manufacturing tools to create accurate and efficient engineering models.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Future Goals -->
+            <div class="modern-card p-8">
+                <h3 class="text-2xl font-bold mb-6">Future Academic Goals</h3>
+                <div class="space-y-6">
+                    <div class="timeline-item">
+                        <h4 class="text-lg font-semibold mb-2">Diploma in Mechanical Technology (Expected 2026)</h4>
+                        <p class="text-gray-400">On track to graduate from Comilla Polytechnic Institute with strong academic performance</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="text-lg font-semibold mb-2">Bachelor's Degree (2027-2030)</h4>
+                        <p class="text-gray-400">Aspiring to pursue a B.Sc. in Mechanical Engineering to deepen my understanding and contribute to innovative solutions</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="text-lg font-semibold mb-2">Professional Certification</h4>
+                        <p class="text-gray-400">Earn industry recognized certifications to enhance expertise in specialized mechanical and engineering fields</p>
+                    </div>
+                    <div class="timeline-item">
+                        <h4 class="text-lg font-semibold mb-2">Higher Studies</h4>
+                        <p class="text-gray-400">Planning to pursue a B.Sc. in Mechanical Engineering to expand my knowledge and practical skills for a successful career in the engineering field</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact-section" class="section">
+        <div class="section-content py-20 px-5 max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <div class="inline-block px-4 py-2 bg-green-500/10 rounded-full mb-4">
+                    <span class="text-green-500 font-semibold">LET'S CONNECT</span>
+                </div>
+                <h2 class="section-title text-5xl md:text-7xl mb-6">Get In Touch</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+                 I’m always excited to connect! Whether you have questions, ideas for collaboration, or just want to say hello, feel free to reach out    
+                </p>
+            </div>
+            
+            <!-- Contact Methods -->
+            <div class="modern-card p-8 mb-8">
+                <div class="space-y-6">
+                    <!-- Email -->
+                    <div class="flex items-center gap-6 p-6 rounded-xl bg-gray-900/30 hover:bg-gray-800/50 transition-colors">
+                        <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-envelope text-blue-500 text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-sm text-gray-500 mb-1">Email Address</div>
+                            <div class="font-semibold">khadiza.houqe@yeandex.ru</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Telegram -->
+                    <div class="flex items-center gap-6 p-6 rounded-xl bg-blue-500/10 hover:bg-blue-500/20 transition-colors border border-blue-500/30">
+                        <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
+                            <i class="fab fa-telegram-plane text-white text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-sm text-gray-500 mb-1">Telegram (Primary)</div>
+                            <div class="font-semibold">@hira_appk_developer</div>
+                            <p class="text-sm text-gray-400 mt-2">
+                                <i class="fas fa-bolt text-yellow-500 mr-2"></i> Fast response guaranteed
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Location -->
+                    <div class="flex items-center gap-6 p-6 rounded-xl bg-gray-900/30 hover:bg-gray-800/50 transition-colors">
+                        <div class="w-12 h-12 bg-green-500/10 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-map-marker-alt text-green-500 text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-sm text-gray-500 mb-1">Location</div>
+                            <div class="font-semibold">Comilla, Bangladesh</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <a href="https://t.me/khadiza_houqe" target="_blank" 
+               class="modern-card block p-6 text-center hover:bg-blue-500/10 hover:border-blue-500/50 transition-all group">
+                <div class="flex items-center justify-center gap-4">
+                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <i class="fab fa-telegram-plane text-white text-xl"></i>
+                    </div>
+                    <div class="text-left">
+                        <div class="text-lg font-semibold">Message on Telegram</div>
+                        <div class="text-sm text-gray-400">I usually respond within a few hours</div>
+                    </div>
+                    <i class="fas fa-arrow-right text-blue-500 text-xl group-hover:translate-x-2 transition-transform"></i>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="fixed bottom-0 left-0 w-full py-2 px-3 text-center bg-black/20 backdrop-blur-xl border-t border-gray-800/0.5 z-02">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="text-sm text-gray-400 mb-2 md:mb-0">
+                    © 2026 Khadiza Houqe. All rights reserved.
+                </div>
+                <div class="flex items-center gap-6">
+                    <span class="text-sm text-green-500">Developed by Tawhid</span>
+                    <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Section navigation system
+        const sections = {
+            'home': document.getElementById('home-section'),
+            'about': document.getElementById('about-section'),
+            'family': document.getElementById('family-section'),
+            'education': document.getElementById('education-section'),
+            'contact': document.getElementById('contact-section')
+        };
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        let currentSection = 'home';
+
+        // Function to show a specific section
+        function showSection(sectionId) {
+            // Hide all sections
+            Object.values(sections).forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected section
+            if (sections[sectionId]) {
+                sections[sectionId].classList.add('active');
+                currentSection = sectionId;
+                
+                // Scroll to top of the section
+                sections[sectionId].scrollTop = 0;
+            }
+            
+            // Update navigation active state
+            updateNavActiveState(sectionId);
+        }
+
+        // Function to update navigation active state
+        function updateNavActiveState(sectionId) {
+            navLinks.forEach(link => {
+                link.classList.remove('nav-active', 'text-blue-500');
+                link.classList.add('text-gray-400');
+                
+                if (link.getAttribute('data-target') === sectionId) {
+                    link.classList.remove('text-gray-400');
+                    link.classList.add('nav-active', 'text-blue-500');
+                }
+            });
+        }
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        let isDarkMode = true;
+
+        function toggleTheme() {
+            if (isDarkMode) {
+                // Switch to light mode
+                body.setAttribute('data-theme', 'light');
+                themeToggle.innerHTML = '<i class="fas fa-moon text-indigo-600"></i>';
+                themeToggle.classList.replace('bg-gray-800', 'bg-gray-200');
+                isDarkMode = false;
+            } else {
+                // Switch to dark mode
+                body.setAttribute('data-theme', 'dark');
+                themeToggle.innerHTML = '<i class="fas fa-sun text-yellow-500"></i>';
+                themeToggle.classList.replace('bg-gray-200', 'bg-gray-800');
+                isDarkMode = true;
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('home');
+            
+            // Home button click
+            document.getElementById('homeBtn').addEventListener('click', () => {
+                showSection('home');
+            });
+            
+            // Navigation links click
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = link.getAttribute('data-target');
+                    showSection(target);
+                    closeMobileMenu();
+                });
+            });
+            
+            // Contact buttons
+            document.querySelectorAll('.contact-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    showSection('contact');
+                    closeMobileMenu();
+                });
+            });
+            
+            // Theme toggle
+            themeToggle.addEventListener('click', toggleTheme);
+        });
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+            mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+            mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            mobileMenuBtn.classList.replace('bg-gray-700', 'bg-gray-800');
+        }
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                mobileMenuBtn.classList.replace('bg-gray-800', 'bg-gray-700');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                mobileMenuBtn.classList.replace('bg-gray-700', 'bg-gray-800');
+            }
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Update active state for home
+        updateNavActiveState('home');
+    </script>
+</body>
+  </html>
